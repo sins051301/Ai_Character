@@ -1,4 +1,6 @@
 {
+  "main": "public/main.js",
+  "homepage": "./",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -10,17 +12,25 @@
     "@types/node": "^16.18.96",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
+    "electron-is-dev": "^3.0.1",
+    "framer-motion": "^11.1.7",
     "react": "^18.3.1",
+    "react-devtools": "^5.1.0",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.1.9",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yarn": "^1.22.22"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "wait-on http://localhost:3000 && electron .",
+    "compile-main": "tsc ./src/main/main.js --outdir ./compile-main && tsc ./src/main/preload.js --outdir ./compile-main",
+    "dev": "concurrently \"yarn start\" \"yarn electron\""
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +49,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^30.0.2",
+    "electron-builder": "^24.13.3",
+    "wait-on": "^7.2.0"
+  },
+  "type": "module"
 }
