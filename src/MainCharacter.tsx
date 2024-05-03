@@ -4,16 +4,16 @@ import { useState } from "react";
 
 const Styledback = styled.div`
   width: 15vw;
-  height: 40vw;
-  position: fixed;
-  bottom: 0;
-  right: 0;
+  height: 40vh;
+  //position: fixed;
+  //bottom: 0;
+  //right: 0;
   text-align: center;
 `;
 
 const Styledimg = styled.img`
   width: 15vw;
-  height: 35vw;
+  height: 35vh;
   border-radius: 10px;
 `
 
