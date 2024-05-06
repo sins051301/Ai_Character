@@ -20,9 +20,7 @@ function createWindow() {
       devTools: isDev,
     },
   });
-  //const child = new BrowserWindow({ parent: mainWindow })
-  //child.show()
-  //mainWindow.show()
+  
   mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
