@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
-import { emotionState } from "./recoil/EmotionAtom";
+import { userState } from "./recoil/ChattingAtom";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
+import {User} from "./configs/CharacterInterface";
 const Styledback = styled.div`
   width: 40vw;
   height: 85vh;
@@ -20,7 +21,7 @@ const Styledimg = styled.img`
 
 function MainCharacter() {
   const [isVisible, setVisible] = useState<boolean>(false);
-  const [emotion, setemotion] = useRecoilState(emotionState);
+  const [emotion, setemotion] = useRecoilState(userState);
 
   function handleClick() {
     setVisible(!isVisible);
@@ -36,7 +37,7 @@ function MainCharacter() {
               exit={{ opacity: 0 }}
               whileHover={{ scale: 1.2 }}
             >
-              <Styledimg src={`./img/${emotion}.jpg`} alt="img" />
+              <Styledimg src={`./img/${emotion.emotion}.jpg`} alt="img" />
             </motion.div>
           )}
         </AnimatePresence>

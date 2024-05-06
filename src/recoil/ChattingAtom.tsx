@@ -1,20 +1,21 @@
 import { atom, selector } from "recoil";
+import { LocalStorageEffect } from "./LocalStorageEffect";
+import {User} from "../configs/CharacterInterface";
 
-
-export interface User{
-  id: number;
-  name: string;
-  chat: string;
-  
-}
-
-export const textState = atom<User>({
-  key: "textState", // unique ID (with respect to other atoms/selectors)
+export const userState = atom<User>({
+  key: "userState", // unique ID (with respect to other atoms/selectors)
   default: {
     id: 0,
     name: "default name",
     chat: "default chat",
-  }, 
+    emotion: "default emotion",
+  },
+  effects: [
+    //LocalStorageEffect('textState'),
+    ({ onSet }) => {
+      console.log("상태 변화");
+    },
+  ],
 });
 
 // export const chatState = selector({

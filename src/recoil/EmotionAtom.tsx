@@ -1,4 +1,4 @@
-import { atom, useRecoilState } from "recoil";
+import { atom } from "recoil";
 
 export const emotionState = atom({
   key: "imgState", // unique ID (with respect to other atoms/selectors)

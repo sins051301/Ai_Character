@@ -1,6 +1,8 @@
 import Chatting from "./Chatting";
 import styled from "styled-components";
 import { ReactElement } from "react";
+import { chatState } from "./recoil/StateAtom";
+import { useRecoilState } from "recoil";
 const StyledChat = styled.div`
   position: relative;
   width: 40vw;
@@ -27,10 +29,15 @@ const StyledChat = styled.div`
 `;
 
 function ChattingContainer() {
+  const [chat, setChat] = useRecoilState<boolean>(chatState);
   return (
-    <StyledChat>
-      <Chatting></Chatting>
-    </StyledChat>
+    <div>
+      {chat && (
+        <StyledChat>
+          <Chatting></Chatting>
+        </StyledChat>
+      )}
+    </div>
   );
 }
 
