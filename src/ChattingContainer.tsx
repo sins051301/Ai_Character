@@ -1,6 +1,6 @@
 import Chatting from "./Chatting";
 import styled from "styled-components";
-
+import { ReactElement } from "react";
 const StyledChat = styled.div`
   position: relative;
   width: 40vw;

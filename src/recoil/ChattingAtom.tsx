@@ -1,8 +1,20 @@
 import { atom, selector } from "recoil";
 
-export const textState = atom({
+
+export interface User{
+  id: number;
+  name: string;
+  chat: string;
+  
+}
+
+export const textState = atom<User>({
   key: "textState", // unique ID (with respect to other atoms/selectors)
-  default: "hello", // default value (aka initial value)
+  default: {
+    id: 0,
+    name: "default name",
+    chat: "default chat",
+  }, 
 });
 
 // export const chatState = selector({
