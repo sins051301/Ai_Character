@@ -4,6 +4,7 @@ import { userState } from "./recoil/ChattingAtom";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import {User} from "./configs/CharacterInterface";
+
 const Styledback = styled.div`
   width: 40vw;
   height: 85vh;
@@ -22,7 +23,7 @@ const Styledimg = styled.img`
 function MainCharacter() {
   const [isVisible, setVisible] = useState<boolean>(false);
   const [emotion, _] = useRecoilState(userState);
-
+  
   function handleClick() {
     setVisible(!isVisible);
   }
@@ -44,6 +45,7 @@ function MainCharacter() {
         Ai bot
       </Styledback>
       <button onClick={handleClick}>Click me</button>
+      
     </div>
   );
 }

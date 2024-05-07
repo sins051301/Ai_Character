@@ -5,6 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { worker } from './mocking/browser'
 import { RecoilRoot } from 'recoil';
+import { AudioRecorder } from 'react-audio-voice-recorder';
+
+const addAudioElement = (blob:any) => {
+  const url = URL.createObjectURL(blob);
+  const audio = document.createElement("audio");
+  audio.src = url;
+  audio.controls = true;
+  document.body.appendChild(audio);
+};
+
 async function enableMocking() {
   if (process.env.NODE_ENV !== 'development') {
     return;
@@ -23,6 +33,15 @@ enableMocking().then(()=>{
   root.render(
     <React.StrictMode>
        <RecoilRoot>
+       <AudioRecorder 
+      onRecordingComplete={addAudioElement}
+      audioTrackConstraints={{
+        noiseSuppression: true,
+        echoCancellation: true,
+      }} 
+      downloadOnSavePress={true}
+      downloadFileExtension="webm"
+    />
       <App />
       </RecoilRoot>
     </React.StrictMode>
