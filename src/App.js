@@ -2,7 +2,7 @@
 import MainPage from "./MainPage.tsx";
 import styled from "styled-components";
 import { keyState } from "./recoil/KeyAtom.tsx";
-import {Recorder} from 'react-voice-recorder';
+import { useAudioRecorder } from 'react-audio-voice-recorder';
 
 import {
   RecoilRoot,
@@ -24,20 +24,18 @@ const StyledMainBack = styled.div`
 
 function App() {
   const { KeyDown, KeyUp } = KeyEvent();
-  const [isRecording, setIsRecording] = useState(false);
+  //const [isRecording, setIsRecording] = useState(false);
   const[keyE, _] = useRecoilState(keyState);
-
-  const handleRecording = (data) => {
-    console.log(data); // 여기서 녹음 데이터를 사용할 수 있습니다.
-  };
-
-  const startRecording = () => {
-    setIsRecording(true);
-  };
-
-  const stopRecording = () => {
-    setIsRecording(false);
-  };
+  const {
+    startRecording,
+    stopRecording,
+    togglePauseResume,
+    recordingBlob,
+    isRecording,
+    isPaused,
+    recordingTime,
+    mediaRecorder
+  } = useAudioRecorder();
 
   useEffect(() => {
     window.addEventListener("keydown", KeyDown);
@@ -46,25 +44,20 @@ function App() {
       startRecording();
     else{
       stopRecording();
-      handleRecording();
+      if (!recordingBlob) return;
+      console.log(recordingBlob);
     }
       
     return () => {
       window.removeEventListener("keydown", KeyDown);
       window.removeEventListener("keyup", KeyUp);
     };
-  }, [keyE, isRecording]);
+  }, [keyE, recordingBlob]);
 
   console.log(keyE);
   return (
     <StyledMainBack>
       <MainPage>
-      <Recorder
-        record={isRecording}
-        title={"Voice Recording"}
-        onData={handleRecording}
-        backgroundColor={"#f1f1f1"}
-      />
       </MainPage>
     </StyledMainBack>
   );

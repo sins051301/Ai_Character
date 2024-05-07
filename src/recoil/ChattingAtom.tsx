@@ -11,18 +11,9 @@ export const userState = atom<User>({
     emotion: "default emotion",
   },
   effects: [
-    //LocalStorageEffect('textState'),
     ({ onSet }) => {
       console.log("상태 변화");
     },
   ],
 });
 
-// export const chatState = selector({
-//   key: 'chatState', // unique ID (with respect to other atoms/selectors)
-//   get: ({get}) => {
-//     const text = get(textState);
-
-//     return text.length;
-//   },
-// });

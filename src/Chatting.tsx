@@ -13,7 +13,6 @@ function Chatting() {
   const [chat, setChat] = useRecoilState<boolean>(chatState);
 
   useEffect(() => {
-   
     fetch("http://localhost:3000/hi")
       .then((response) => response.json())
       .then((data) => {
@@ -24,7 +23,7 @@ function Chatting() {
       });
       const timer = setTimeout(() => {
         setChat(false);
-      }, 2000);
+      }, 5000);
       return () => {
         clearTimeout(timer);
       };
