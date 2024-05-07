@@ -29,7 +29,7 @@ const StyledChat = styled.div`
 `;
 
 function ChattingContainer() {
-  const [chat, setChat] = useRecoilState<boolean>(chatState);
+  const [chat, _] = useRecoilState<boolean>(chatState);
   return (
     <div>
       {chat && (

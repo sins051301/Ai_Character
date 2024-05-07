@@ -21,7 +21,7 @@ const Styledimg = styled.img`
 
 function MainCharacter() {
   const [isVisible, setVisible] = useState<boolean>(false);
-  const [emotion, setemotion] = useRecoilState(userState);
+  const [emotion, _] = useRecoilState(userState);
 
   function handleClick() {
     setVisible(!isVisible);

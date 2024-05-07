@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { worker } from './mocking/browser'
- 
+import { RecoilRoot } from 'recoil';
 async function enableMocking() {
   if (process.env.NODE_ENV !== 'development') {
     return;
@@ -22,7 +22,9 @@ const root = ReactDOM.createRoot(
 enableMocking().then(()=>{
   root.render(
     <React.StrictMode>
+       <RecoilRoot>
       <App />
+      </RecoilRoot>
     </React.StrictMode>
   );
 })
