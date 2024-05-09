@@ -11,7 +11,7 @@ const Styledfont = styled.div`
 function Chatting() {
   const [text, setText] = useRecoilState<User>(userState);
   const [chat, setChat] = useRecoilState<boolean>(chatState);
-
+  
   useEffect(() => {
     fetch("http://localhost:3000/hi")
       .then((response) => response.json())
