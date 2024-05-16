@@ -11,7 +11,6 @@ import {
   useQuery,
 } from '@tanstack/react-query'
 
-const queryClient = new QueryClient()
 
 async function enableMocking() {
   if (process.env.NODE_ENV !== 'development') {
@@ -27,16 +26,21 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
-enableMocking().then(()=>{
+// enableMocking().then(()=>{
+//   root.render(
+//     <React.StrictMode>
+//        <RecoilRoot>
+//       <App />
+//       </RecoilRoot>
+//     </React.StrictMode>
+//   );
+// })
   root.render(
     <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
        <RecoilRoot>
       <App />
       </RecoilRoot>
-      </QueryClientProvider>
     </React.StrictMode>
   );
-})
 
 reportWebVitals();

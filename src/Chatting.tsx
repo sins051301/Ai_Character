@@ -1,6 +1,7 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { userState } from "./recoil/ChattingAtom";
 import { ReactElement, useEffect, useState } from "react";
+import FetchData from "./utils/FetchData";
 import styled from "styled-components";
 import { User } from "../src/configs/CharacterInterface";
 import { chatState } from "./recoil/StateAtom";
@@ -9,26 +10,20 @@ const Styledfont = styled.div`
 `;
 
 function Chatting() {
-  const [text, setText] = useRecoilState<User>(userState);
+  const [user, setUser] = useRecoilState<User>(userState);
   const [chat, setChat] = useRecoilState<boolean>(chatState);
-  
   useEffect(() => {
-    fetch("http://localhost:3000/hi")
-      .then((response) => response.json())
-      .then((data) => {
-        setText(data);
-      })
-      .catch((error) => {
-        console.log("수신 실패");
-      });
-      const timer = setTimeout(() => {
-        setChat(false);
-      }, 5000);
-      return () => {
-        clearTimeout(timer);
-      };
-  }, [chat]);
-  return <Styledfont>{text.chat}</Styledfont>;
+
+    console.log(22222);
+    console.log(user.chat);
+    const timer = setTimeout(() => {
+      setChat(false);
+    }, 5000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [chat, user]);
+  return <Styledfont>{user.chat}</Styledfont>;
 }
 
 export default Chatting;
