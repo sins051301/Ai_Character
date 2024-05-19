@@ -4,13 +4,13 @@ import { User } from "../configs/CharacterInterface";
 import axios from "axios";
 import { useEffect } from "react";
 
-function FetchData() {
+function FetchMockingData() {
   const [user, setUser] = useRecoilState<User>(userState);
   useEffect(() => {
     const fetchAudio = async () => {
       try {
         const response = await axios
-          .get(`${ process.env.REACT_APP_TEST_URL}`) // /contents/chloe_voice.wav
+          .get("/happy") // /contents/chloe_voice.wav
             setUser(response.data);
           //console.log(response.data);
       } catch (error) {
@@ -18,7 +18,7 @@ function FetchData() {
       }
     };
     fetchAudio();
-  });
+  },[]);
 }
 
-export default FetchData;
+export default FetchMockingData;

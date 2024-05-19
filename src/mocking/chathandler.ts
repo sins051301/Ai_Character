@@ -4,7 +4,7 @@ import { http, HttpResponse } from "msw";
 
 export const chathandler = [
   // Intercept "GET https://example.com/user" requests...
-  http.get("/hi", () => {
+  http.get("/happy", () => {
     // ...and respond to them using this JSON response.
     return HttpResponse.json({
       id: "010513",

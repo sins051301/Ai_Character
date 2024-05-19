@@ -26,15 +26,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
-// enableMocking().then(()=>{
-//   root.render(
-//     <React.StrictMode>
-//        <RecoilRoot>
-//       <App />
-//       </RecoilRoot>
-//     </React.StrictMode>
-//   );
-// })
+enableMocking().then(()=>{
   root.render(
     <React.StrictMode>
        <RecoilRoot>
@@ -42,5 +34,13 @@ const root = ReactDOM.createRoot(
       </RecoilRoot>
     </React.StrictMode>
   );
+})
+  // root.render(
+  //   <React.StrictMode>
+  //      <RecoilRoot>
+  //     <App />
+  //     </RecoilRoot>
+  //   </React.StrictMode>
+  // );
 
 reportWebVitals();

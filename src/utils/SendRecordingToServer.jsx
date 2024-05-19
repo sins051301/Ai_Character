@@ -5,9 +5,9 @@ function SendRecordingToServer(blob){
     const formData = new FormData();
     formData.append("voice", blob, "recording.wav");
     
-    axios.post("http://172.19.25.241:9145/query", formData, {
+    axios.post(`${process.env.REACT_APP_URL}/query`, formData, {
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "multipart/form-data",  // /query
       },
     })
     .then(response => {

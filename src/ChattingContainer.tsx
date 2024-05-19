@@ -7,11 +7,12 @@ const StyledChat = styled.div`
   position: relative;
   width: 40vw;
   height: 30vh;
-  padding: 1px;
+  left: 0;
+  padding: 5px; /* Padding 값 조정 */
   background: #ffffff;
   -webkit-border-radius: 33px;
   -moz-border-radius: 33px;
-  border-radius: 33px;
+  border-radius: 0px;
   text-align: center;
 
   &::after {
@@ -29,7 +30,8 @@ const StyledChat = styled.div`
 `;
 
 function ChattingContainer() {
-  const [chat, _] = useRecoilState<boolean>(chatState);
+  const [chat, setChat] = useRecoilState<boolean>(chatState);
+  //setChat(false);
   return (
     <div>
       {chat && (

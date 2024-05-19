@@ -14,8 +14,10 @@
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "axios": "^1.6.8",
+    "cors": "^2.8.5",
     "electron-is-dev": "^3.0.1",
     "framer-motion": "^11.1.7",
+    "json-server": "^1.0.0-beta.0",
     "msw": "^2.2.14",
     "react": "^18.3.1",
     "react-audio-voice-recorder": "^2.2.0",
@@ -38,7 +40,9 @@
     "eject": "react-scripts eject",
     "electron": "wait-on http://localhost:3000 && electron .",
     "compile-main": "tsc ./src/main/main.js --outdir ./compile-main && tsc ./src/main/preload.js --outdir ./compile-main",
-    "dev": "concurrently \"yarn start\" \"yarn electron\""
+    "start2": "json-server --watch src/mocking/db.json --port 4000", 
+    "dev": "concurrently \"yarn start\" \"yarn electron\"",
+    "div": "yarn start"
   },
   "eslintConfig": {
     "extends": [

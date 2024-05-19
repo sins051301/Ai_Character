@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { keyState } from "./recoil/KeyAtom.tsx";
 import { useAudioRecorder } from "react-audio-voice-recorder";
 import axios from "axios";
+
 import {
   RecoilRoot,
   atom,
@@ -15,6 +16,7 @@ import { useEffect, useState } from "react";
 import { KeyEvent } from "./event/KeyEvent.tsx";
 import SendRecordingToServer from "./utils/SendRecordingToServer.jsx";
 import FetchData from "./utils/FetchData.tsx";
+
 
 const StyledMainBack = styled.div`
   //background: rgba(0,0,0, 0);
@@ -55,7 +57,7 @@ function App() {
       if (!recordingBlob) return;
       else {
         SendRecordingToServer(recordingBlob);
-        FetchData();
+        //FetchData();
       }
     }
 
