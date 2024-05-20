@@ -18,7 +18,7 @@ function FetchData() {
       }
     };
     fetchAudio();
-  });
+  },[user]);
 }
 
 export default FetchData;

@@ -1,9 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { userState } from "./recoil/ChattingAtom";
 import { useState } from "react";
 import { User } from "./configs/CharacterInterface";
+import { customState } from "./recoil/CustomAtom";
 
 const Styledback = styled.div`
   width: 40vw;
@@ -40,7 +41,7 @@ const characterMotion: any = {
 function MainCharacter() {
   const [isVisible, setVisible] = useState<boolean>(true);
   const [emotion, _] = useRecoilState<User>(userState);
-
+  const characterstyle = useRecoilValue(customState);
   function handleClick() {
     setVisible(!isVisible);
   }
@@ -52,7 +53,7 @@ function MainCharacter() {
           {isVisible && (
             <Styledimg
               key={emotion.emotion}
-              src={`./img/${emotion.emotion}.png`}
+              src={`./img/${characterstyle}/${emotion.emotion}.png`}
               alt="img"
               variants={characterMotion}
               initial="initial"

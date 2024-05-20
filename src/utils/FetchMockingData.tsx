@@ -18,7 +18,7 @@ function FetchMockingData() {
       }
     };
     fetchAudio();
-  },[]);
+  },[user]);
 }
 
 export default FetchMockingData;

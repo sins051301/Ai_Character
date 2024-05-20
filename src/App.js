@@ -1,5 +1,5 @@
 //import Canvas from "./Canvas.js";
-import MainPage from "./MainPage.tsx";
+import MainPage from "./pages/MainPage.tsx";
 import styled from "styled-components";
 import { keyState } from "./recoil/KeyAtom.tsx";
 import { useAudioRecorder } from "react-audio-voice-recorder";
@@ -12,17 +12,30 @@ import {
   useRecoilState,
   useRecoilValue,
 } from "recoil";
-import { useEffect, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import { KeyEvent } from "./event/KeyEvent.tsx";
 import SendRecordingToServer from "./utils/SendRecordingToServer.jsx";
 import FetchData from "./utils/FetchData.tsx";
+import ErrorPage from "./pages/ErrorPage.tsx";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import CustomPage from "./pages/CustomPage.tsx";
 
-
-const StyledMainBack = styled.div`
-  //background: rgba(0,0,0, 0);
-  //width: 100vw;
-  //height: 100vh;
-`;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "",
+        element: <MainPage />,
+      },
+      {
+        path: "/custom",
+        element: <CustomPage />,
+      },
+    ],
+  },
+]);
 
 function App() {
   const { KeyDown, KeyUp } = KeyEvent();
@@ -68,11 +81,7 @@ function App() {
   }, [keyE, recordingBlob]);
 
   console.log(keyE);
-  return (
-    <StyledMainBack>
-      <MainPage></MainPage>
-    </StyledMainBack>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

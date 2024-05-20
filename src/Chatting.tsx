@@ -15,15 +15,16 @@ function Chatting() {
   const [user, setUser] = useRecoilState<User>(userState);
   const [chat, setChat] = useRecoilState<boolean>(chatState);
   FetchMockingData();
+  //setChat(false);
   useEffect(() => {
     
-    //console.log(user.chat);
-    // const timer = setTimeout(() => {
-    //   setChat(false);
-    // }, 5000);
-    // return () => {
-    //   clearTimeout(timer);
-    // };
+    console.log(user.chat);
+    const timer = setTimeout(() => {
+      setChat(false);
+    }, 5000);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [chat, user]);
   return <Styledfont>{user.chat}</Styledfont>;
 }
