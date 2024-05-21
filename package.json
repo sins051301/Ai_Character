@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tanstack/react-query": "^5.35.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,13 +13,23 @@
     "@types/node": "^16.18.96",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
     "electron-is-dev": "^3.0.1",
     "framer-motion": "^11.1.7",
+    "json-server": "^1.0.0-beta.0",
+    "msw": "^2.3.0",
     "react": "^18.3.1",
+    "react-audio-voice-recorder": "^2.2.0",
     "react-devtools": "^5.1.0",
     "react-dom": "^18.3.1",
+    "react-router": "^6.23.1",
+    "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "react-voice-recorder": "^2.1.2",
     "recoil": "^0.7.7",
+    "recoil-sync": "^0.2.0",
+    "recorder-js": "^1.0.7",
     "styled-components": "^6.1.9",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
@@ -31,7 +42,9 @@
     "eject": "react-scripts eject",
     "electron": "wait-on http://localhost:3000 && electron .",
     "compile-main": "tsc ./src/main/main.js --outdir ./compile-main && tsc ./src/main/preload.js --outdir ./compile-main",
-    "dev": "concurrently \"yarn start\" \"yarn electron\""
+    "start2": "json-server --watch src/mocking/db.json --port 4000",
+    "dev": "concurrently \"yarn start\" \"yarn electron\"",
+    "div": "yarn start"
   },
   "eslintConfig": {
     "extends": [
@@ -58,5 +71,10 @@
     "electron-builder": "^24.13.3",
     "wait-on": "^7.2.0"
   },
-  "type": "module"
+  "type": "module",
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
 }

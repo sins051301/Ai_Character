@@ -1,15 +1,18 @@
 import Chatting from "./Chatting";
 import styled from "styled-components";
-
+import { ReactElement } from "react";
+import { chatState } from "./recoil/StateAtom";
+import { useRecoilState } from "recoil";
 const StyledChat = styled.div`
   position: relative;
   width: 40vw;
   height: 30vh;
-  padding: 1px;
+  left: 0;
+  padding: 5px; /* Padding 값 조정 */
   background: #ffffff;
   -webkit-border-radius: 33px;
   -moz-border-radius: 33px;
-  border-radius: 33px;
+  border-radius: 0px;
   text-align: center;
 
   &::after {
@@ -27,10 +30,15 @@ const StyledChat = styled.div`
 `;
 
 function ChattingContainer() {
+  const [chat, setChat] = useRecoilState<boolean>(chatState);
   return (
-    <StyledChat>
-      <Chatting></Chatting>
-    </StyledChat>
+    <div>
+      {chat && (
+        <StyledChat>
+          <Chatting></Chatting>
+        </StyledChat>
+      )}
+    </div>
   );
 }
 

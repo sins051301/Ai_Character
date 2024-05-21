@@ -17,5 +17,5 @@
     "jsx": "react-jsx"
   },
   "include": ["src", "src/recoil/ChattingAtom.tsx"],
-  "extensions": [".js", ".jsx", ".ts", ".tsx"]
+  //"extensions": [".js", ".jsx", ".ts", ".tsx"]
 }
