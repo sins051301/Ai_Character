@@ -64,6 +64,7 @@ function App() {
   useEffect(() => {
     window.addEventListener("keydown", KeyDown);
     window.addEventListener("keyup", KeyUp);
+
     if (keyE) startRecording();
     else {
       stopRecording();

@@ -5,7 +5,8 @@ import { userState } from "./recoil/ChattingAtom";
 import { useState } from "react";
 import { User } from "./configs/CharacterInterface";
 import { customState } from "./recoil/CustomAtom";
-
+import TouchEmotion from "./utils/TouchEmotion";
+import { clickState } from "./recoil/ClickAtom";
 const Styledback = styled.div`
   width: 40vw;
   height: 85vh;
@@ -41,9 +42,14 @@ const characterMotion: any = {
 function MainCharacter() {
   const [isVisible, setVisible] = useState<boolean>(true);
   const [emotion, _] = useRecoilState<User>(userState);
+  const [count, setCount] = useRecoilState(clickState);
   const characterstyle = useRecoilValue(customState);
+  TouchEmotion();
   function handleClick() {
     setVisible(!isVisible);
+  }
+  function countClick(){
+    setCount((cnt) => cnt + 1);
   }
 
   return (
@@ -59,6 +65,7 @@ function MainCharacter() {
               initial="initial"
               animate="animate"
               exit="exit"
+              onClick={countClick}
             />
           )}
         </AnimatePresence>
